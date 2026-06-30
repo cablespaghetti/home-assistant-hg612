@@ -104,7 +104,8 @@ def parse_stats(text: str) -> HG612Stats:
 
 def parse_system_uptime(text: str) -> float:
     """Parse the first field of /proc/uptime (seconds since boot, as a float)."""
-    try:
-        return float(text.split()[0])
-    except (ValueError, IndexError) as err:
-        raise ValueError(f"Could not parse /proc/uptime: {text!r}") from err
+    for line in text.splitlines():
+        m = re.match(r"(\d+\.\d+)\s+\d+\.\d+", line.strip())
+        if m:
+            return float(m.group(1))
+    raise ValueError(f"Could not parse /proc/uptime: {text!r}")

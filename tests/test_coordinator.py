@@ -11,6 +11,8 @@ MOCK_STATS = HG612Stats(
     dsl_uptime_seconds=471173,
     downstream_kbps=36076,
     upstream_kbps=4795,
+    max_downstream_kbps=36196,
+    max_upstream_kbps=4809,
     system_uptime_seconds=654321.0,
 )
 

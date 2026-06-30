@@ -34,6 +34,12 @@ class TestParseStatsFromRealOutput:
         assert stats.upstream_kbps != 0
         assert stats.downstream_kbps != 0
 
+    def test_max_downstream_rate(self):
+        assert parse_stats(TESTDATA).max_downstream_kbps == 36196
+
+    def test_max_upstream_rate(self):
+        assert parse_stats(TESTDATA).max_upstream_kbps == 4809
+
 
 class TestParseStatsEdgeCases:
     def test_crlf_line_endings(self):
@@ -46,6 +52,7 @@ class TestParseStatsEdgeCases:
     def test_bearer_with_tab_separator(self):
         # Some firmware variants use a tab after the colon
         data = textwrap.dedent("""\
+            Max:    Upstream rate = 1100 Kbps, Downstream rate = 2200 Kbps
             Bearer:\t0, Upstream rate = 1000 Kbps, Downstream rate = 2000 Kbps
             Since Link time = 0 days 1 hours 0 min 0 sec
         """)
@@ -55,6 +62,7 @@ class TestParseStatsEdgeCases:
 
     def test_uptime_zero_days(self):
         data = textwrap.dedent("""\
+            Max:    Upstream rate = 600 Kbps, Downstream rate = 1100 Kbps
             Bearer: 0, Upstream rate = 500 Kbps, Downstream rate = 1000 Kbps
             Since Link time = 0 days 0 hours 5 min 3 sec
         """)
@@ -62,6 +70,7 @@ class TestParseStatsEdgeCases:
 
     def test_uptime_many_days(self):
         data = textwrap.dedent("""\
+            Max:    Upstream rate = 600 Kbps, Downstream rate = 1100 Kbps
             Bearer: 0, Upstream rate = 500 Kbps, Downstream rate = 1000 Kbps
             Since Link time = 99 days 23 hours 59 min 59 sec
         """)

@@ -62,6 +62,22 @@ SENSORS: tuple[HG612SensorDescription, ...] = (
         state_class=SensorStateClass.MEASUREMENT,
         value_fn=lambda s: s.upstream_kbps,
     ),
+    HG612SensorDescription(
+        key="max_downstream_rate",
+        name="DSL Max Downstream Rate",
+        device_class=SensorDeviceClass.DATA_RATE,
+        native_unit_of_measurement=UnitOfDataRate.KILOBITS_PER_SECOND,
+        state_class=SensorStateClass.MEASUREMENT,
+        value_fn=lambda s: s.max_downstream_kbps,
+    ),
+    HG612SensorDescription(
+        key="max_upstream_rate",
+        name="DSL Max Upstream Rate",
+        device_class=SensorDeviceClass.DATA_RATE,
+        native_unit_of_measurement=UnitOfDataRate.KILOBITS_PER_SECOND,
+        state_class=SensorStateClass.MEASUREMENT,
+        value_fn=lambda s: s.max_upstream_kbps,
+    ),
 )
 
 

@@ -18,45 +18,22 @@ TESTDATA = (pathlib.Path(__file__).parent / "testdata.txt").read_text()
 EXPECTED_UPTIME = 5 * 86400 + 10 * 3600 + 52 * 60 + 53  # 471173
 
 
-class TestParseStatsFromRealOutput:
-    def test_downstream_rate(self):
-        assert parse_stats(TESTDATA).downstream_kbps == 36076
-
-    def test_upstream_rate(self):
-        assert parse_stats(TESTDATA).upstream_kbps == 4795
-
-    def test_dsl_uptime_seconds(self):
-        assert parse_stats(TESTDATA).dsl_uptime_seconds == EXPECTED_UPTIME
-
-    def test_bearer_0_used_not_bearer_1(self):
-        # Bearer 1 has 0 Kbps rates — ensure we picked Bearer 0
-        stats = parse_stats(TESTDATA)
-        assert stats.upstream_kbps != 0
-        assert stats.downstream_kbps != 0
-
-    def test_max_downstream_rate(self):
-        assert parse_stats(TESTDATA).max_downstream_kbps == 36196
-
-    def test_max_upstream_rate(self):
-        assert parse_stats(TESTDATA).max_upstream_kbps == 4809
-
-    def test_snr_downstream(self):
-        assert parse_stats(TESTDATA).snr_downstream_db == pytest.approx(3.6)
-
-    def test_snr_upstream(self):
-        assert parse_stats(TESTDATA).snr_upstream_db == pytest.approx(6.5)
-
-    def test_attn_downstream(self):
-        assert parse_stats(TESTDATA).attn_downstream_db == pytest.approx(25.6)
-
-    def test_attn_upstream(self):
-        assert parse_stats(TESTDATA).attn_upstream_db == pytest.approx(0.0)
-
-    def test_pwr_downstream(self):
-        assert parse_stats(TESTDATA).pwr_downstream_dbm == pytest.approx(12.2)
-
-    def test_pwr_upstream(self):
-        assert parse_stats(TESTDATA).pwr_upstream_dbm == pytest.approx(7.2)
+def test_parse_real_output():
+    stats = parse_stats(TESTDATA)
+    assert stats.downstream_kbps == 36076
+    assert stats.upstream_kbps == 4795
+    assert stats.max_downstream_kbps == 36196
+    assert stats.max_upstream_kbps == 4809
+    assert stats.snr_downstream_db == pytest.approx(3.6)
+    assert stats.snr_upstream_db == pytest.approx(6.5)
+    assert stats.attn_downstream_db == pytest.approx(25.6)
+    assert stats.attn_upstream_db == pytest.approx(0.0)
+    assert stats.pwr_downstream_dbm == pytest.approx(12.2)
+    assert stats.pwr_upstream_dbm == pytest.approx(7.2)
+    assert stats.dsl_uptime_seconds == EXPECTED_UPTIME
+    # Bearer 1 has 0 Kbps — confirm we picked Bearer 0
+    assert stats.upstream_kbps != 0
+    assert stats.downstream_kbps != 0
 
 
 MINIMAL_SNIPPET = textwrap.dedent("""\

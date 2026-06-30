@@ -1,0 +1,21 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to HG612",
+        "data": {
+          "host": "IP Address",
+          "username": "Username",
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect to the modem. Check the IP address and credentials.",
+      "cannot_parse": "Connected but could not parse DSL stats. The modem may be rebooting."
+    },
+    "abort": {
+      "already_configured": "This HG612 is already configured."
+    }
+  }
+}

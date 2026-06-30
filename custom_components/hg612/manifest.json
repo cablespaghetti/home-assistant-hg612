@@ -1,0 +1,10 @@
+{
+  "domain": "hg612",
+  "name": "HG612",
+  "codeowners": ["@samweston"],
+  "config_flow": true,
+  "documentation": "https://github.com/samweston/home-assistant-hg612",
+  "iot_class": "local_polling",
+  "requirements": ["telnetlib3>=4.0.0"],
+  "version": "1.0.0"
+}

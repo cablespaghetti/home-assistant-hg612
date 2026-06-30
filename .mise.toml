@@ -1,0 +1,27 @@
+[tools]
+python = "3.14"
+uv = "latest"
+
+[tasks.install]
+run = "uv sync --dev"
+description = "Install dev dependencies"
+
+[tasks.test]
+run = "uv run pytest tests/ -v"
+description = "Run tests"
+depends = ["install"]
+
+[tasks.lint]
+run = "uv run ruff check ."
+description = "Lint with ruff"
+depends = ["install"]
+
+[tasks.format]
+run = "uv run ruff format ."
+description = "Format with ruff"
+depends = ["install"]
+
+[tasks.fix]
+run = ["uv run ruff check --fix .", "uv run ruff format ."]
+description = "Fix lint issues and format"
+depends = ["install"]

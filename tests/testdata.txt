@@ -1,0 +1,174 @@
+xdslcmd: ADSL driver and PHY status
+Status: Showtime
+Retrain Reason: 1
+Last initialization procedure status:   0
+Max:    Upstream rate = 4809 Kbps, Downstream rate = 36196 Kbps
+Bearer: 0, Upstream rate = 4795 Kbps, Downstream rate = 36076 Kbps
+Bearer: 1, Upstream rate = 0 Kbps, Downstream rate = 0 Kbps
+Link Power State:       L0
+Mode:                   VDSL2 Annex B
+VDSL2 Profile:          Profile 17a
+TPS-TC:                 PTM Mode(0x0)
+Trellis:                U:ON /D:ON
+Line Status:            No Defect
+Training Status:        Showtime
+                Down            Up
+SNR (dB):        3.6             6.5
+Attn(dB):        25.6            0.0
+Pwr(dBm):        12.2            7.2
+                        VDSL2 framing
+                        Bearer 0
+MSGc:           -6              52
+B:              227             143
+M:              1               1
+T:              0               36
+R:              10              12
+S:              0.2010          0.9519
+L:              9472            1311
+D:              4               1
+I:              238             78
+N:              238             156
+Q:              4               0
+V:              0               0
+RxQueue:                88              0
+TxQueue:                22              0
+G.INP Framing:          18              0
+G.INP lookback:         22              0
+RRC bits:               0               24
+                        Bearer 1
+MSGc:           90              -6
+B:              0               0
+M:              2               0
+T:              2               0
+R:              16              0
+S:              10.6667         0.0000
+L:              24              0
+D:              1               0
+I:              32              0
+N:              32              0
+Q:              0               0
+V:              0               0
+RxQueue:                0               0
+TxQueue:                0               0
+G.INP Framing:          0               0
+G.INP lookback:         0               0
+RRC bits:               0               0
+                        Counters
+                        Bearer 0
+OHF:            0               82373
+OHFErr:         3086            212
+RS:             749510060               3714224
+RSCorr:         240359975               12401
+RSUnCorr:       0               0
+                        Bearer 1
+OHF:            29333727                0
+OHFErr:         6               0
+RS:             176001993               0
+RSCorr:         1598            0
+RSUnCorr:       6               0
+
+                        Retransmit Counters
+rtx_tx:         8354113         0
+rtx_c:          4799938         0
+rtx_uc:         223712          0
+
+                        G.INP Counters
+LEFTRS:         6036            0
+minEFTR:        36077           0
+errFreeBits:    1051059090              0
+
+                        Bearer 0
+HEC:            0               0
+OCD:            0               0
+LCD:            0               0
+Total Cells:    2606060083              0
+Data Cells:     1615458164              0
+Drop Cells:     0
+Bit Errors:     0               0
+
+                        Bearer 1
+HEC:            0               0
+OCD:            0               0
+LCD:            0               0
+Total Cells:    0               0
+Data Cells:     0               0
+Drop Cells:     0
+Bit Errors:     0               0
+
+ES:             2851            467
+SES:            211             0
+UAS:            361             248
+AS:             471139
+
+                        Bearer 0
+INP:            52.00           0.00
+INPRein:        1.00            0.00
+delay:          0               0
+PER:            0.00            17.20
+OR:             0.01            26.97
+AgR:            36154.83        4821.78
+
+                        Bearer 1
+INP:            2.50            0.00
+INPRein:        2.50            0.00
+delay:          0               0
+PER:            16.06           0.01
+OR:             47.81           0.01
+AgR:            47.81   0.01
+
+Bitswap:        205497/211307           4293/4326
+
+Total time = 1 days 3 hours 54 min 41 sec
+FEC:            711830169               41478
+CRC:            12200           510
+ES:             2851            467
+SES:            211             0
+UAS:            361             248
+LOS:            1               0
+LOF:            3               0
+LOM:            1               0
+Latest 15 minutes time = 9 min 41 sec
+FEC:            960             0
+CRC:            0               0
+ES:             0               0
+SES:            0               0
+UAS:            0               0
+LOS:            0               0
+LOF:            0               0
+LOM:            0               0
+Previous 15 minutes time = 15 min 0 sec
+FEC:            1424            0
+CRC:            0               0
+ES:             0               0
+SES:            0               0
+UAS:            0               0
+LOS:            0               0
+LOF:            0               0
+LOM:            0               0
+Latest 1 day time = 3 hours 54 min 41 sec
+FEC:            17318           5
+CRC:            0               4
+ES:             0               4
+SES:            0               0
+UAS:            0               0
+LOS:            0               0
+LOF:            0               0
+LOM:            0               0
+Previous 1 day time = 24 hours 0 sec
+FEC:            36827390                727
+CRC:            41              40
+ES:             10              39
+SES:            1               0
+UAS:            0               0
+LOS:            0               0
+LOF:            0               0
+LOM:            0               0
+Since Link time = 5 days 10 hours 52 min 53 sec
+FEC:            240359975               12401
+CRC:            3086            212
+ES:             657             186
+SES:            33              0
+UAS:            31              0
+LOS:            0               0
+LOF:            0               0
+LOM:            0               0

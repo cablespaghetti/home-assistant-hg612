@@ -10,7 +10,12 @@ from homeassistant.components.sensor import (
     SensorStateClass,
 )
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import UnitOfDataRate, UnitOfTime
+from homeassistant.const import (
+    SIGNAL_STRENGTH_DECIBELS,
+    SIGNAL_STRENGTH_DECIBELS_MILLIWATT,
+    UnitOfDataRate,
+    UnitOfTime,
+)
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
@@ -77,6 +82,60 @@ SENSORS: tuple[HG612SensorDescription, ...] = (
         native_unit_of_measurement=UnitOfDataRate.KILOBITS_PER_SECOND,
         state_class=SensorStateClass.MEASUREMENT,
         value_fn=lambda s: s.max_upstream_kbps,
+    ),
+    HG612SensorDescription(
+        key="snr_downstream",
+        name="DSL SNR Downstream",
+        device_class=SensorDeviceClass.SIGNAL_STRENGTH,
+        native_unit_of_measurement=SIGNAL_STRENGTH_DECIBELS,
+        suggested_display_precision=1,
+        state_class=SensorStateClass.MEASUREMENT,
+        value_fn=lambda s: s.snr_downstream_db,
+    ),
+    HG612SensorDescription(
+        key="snr_upstream",
+        name="DSL SNR Upstream",
+        device_class=SensorDeviceClass.SIGNAL_STRENGTH,
+        native_unit_of_measurement=SIGNAL_STRENGTH_DECIBELS,
+        suggested_display_precision=1,
+        state_class=SensorStateClass.MEASUREMENT,
+        value_fn=lambda s: s.snr_upstream_db,
+    ),
+    HG612SensorDescription(
+        key="attn_downstream",
+        name="DSL Attenuation Downstream",
+        device_class=SensorDeviceClass.SIGNAL_STRENGTH,
+        native_unit_of_measurement=SIGNAL_STRENGTH_DECIBELS,
+        suggested_display_precision=1,
+        state_class=SensorStateClass.MEASUREMENT,
+        value_fn=lambda s: s.attn_downstream_db,
+    ),
+    HG612SensorDescription(
+        key="attn_upstream",
+        name="DSL Attenuation Upstream",
+        device_class=SensorDeviceClass.SIGNAL_STRENGTH,
+        native_unit_of_measurement=SIGNAL_STRENGTH_DECIBELS,
+        suggested_display_precision=1,
+        state_class=SensorStateClass.MEASUREMENT,
+        value_fn=lambda s: s.attn_upstream_db,
+    ),
+    HG612SensorDescription(
+        key="pwr_downstream",
+        name="DSL Power Downstream",
+        device_class=SensorDeviceClass.SIGNAL_STRENGTH,
+        native_unit_of_measurement=SIGNAL_STRENGTH_DECIBELS_MILLIWATT,
+        suggested_display_precision=1,
+        state_class=SensorStateClass.MEASUREMENT,
+        value_fn=lambda s: s.pwr_downstream_dbm,
+    ),
+    HG612SensorDescription(
+        key="pwr_upstream",
+        name="DSL Power Upstream",
+        device_class=SensorDeviceClass.SIGNAL_STRENGTH,
+        native_unit_of_measurement=SIGNAL_STRENGTH_DECIBELS_MILLIWATT,
+        suggested_display_precision=1,
+        state_class=SensorStateClass.MEASUREMENT,
+        value_fn=lambda s: s.pwr_upstream_dbm,
     ),
 )
 

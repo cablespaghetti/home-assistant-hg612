@@ -13,6 +13,12 @@ MOCK_STATS = HG612Stats(
     upstream_kbps=4795,
     max_downstream_kbps=36196,
     max_upstream_kbps=4809,
+    snr_downstream_db=3.6,
+    snr_upstream_db=6.5,
+    attn_downstream_db=25.6,
+    attn_upstream_db=0.0,
+    pwr_downstream_dbm=12.2,
+    pwr_upstream_dbm=7.2,
     system_uptime_seconds=654321.0,
 )
 

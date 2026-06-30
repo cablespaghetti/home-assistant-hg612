@@ -46,7 +46,9 @@ async def test_sensor_values(hass, config_entry, mock_fetch):
 
     assert hass.states.get("sensor.hg612_dsl_downstream_rate").state == "36076"
     assert hass.states.get("sensor.hg612_dsl_upstream_rate").state == "4795"
-    assert hass.states.get("sensor.hg612_dsl_uptime").state == "471173"
+    uptime = hass.states.get("sensor.hg612_dsl_uptime")
+    assert uptime.attributes["unit_of_measurement"] == "h"
+    assert abs(float(uptime.state) - 471173 / 3600) < 0.01
 
 
 async def test_setup_fails_on_connection_error(hass, config_entry):

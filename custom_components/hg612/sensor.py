@@ -31,6 +31,8 @@ SENSORS: tuple[HG612SensorDescription, ...] = (
         name="DSL Uptime",
         device_class=SensorDeviceClass.DURATION,
         native_unit_of_measurement=UnitOfTime.SECONDS,
+        suggested_unit_of_measurement=UnitOfTime.HOURS,
+        suggested_display_precision=1,
         state_class=SensorStateClass.MEASUREMENT,
         value_fn=lambda s: s.dsl_uptime_seconds,
     ),

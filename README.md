@@ -8,12 +8,20 @@ The modem's HTTP interface reports DSL uptime as always 0 — this integration r
 
 | Entity | Unit | Description |
 |---|---|---|
-| `sensor.hg612_dsl_uptime` | h | Time since last DSL sync (from `Since Link time`) |
-| `sensor.hg612_system_uptime` | h | Time since last modem reboot (from `/proc/uptime`) |
+| `sensor.hg612_dsl_uptime` | h | Time since last DSL sync (`Since Link time`) |
+| `sensor.hg612_system_uptime` | h | Time since last modem reboot (`/proc/uptime`) |
 | `sensor.hg612_dsl_downstream_rate` | kbit/s | Current downstream sync rate (Bearer 0) |
 | `sensor.hg612_dsl_upstream_rate` | kbit/s | Current upstream sync rate (Bearer 0) |
+| `sensor.hg612_dsl_max_downstream_rate` | kbit/s | Attainable downstream rate |
+| `sensor.hg612_dsl_max_upstream_rate` | kbit/s | Attainable upstream rate |
+| `sensor.hg612_dsl_snr_downstream` | dB | Downstream signal-to-noise ratio |
+| `sensor.hg612_dsl_snr_upstream` | dB | Upstream signal-to-noise ratio |
+| `sensor.hg612_dsl_attenuation_downstream` | dB | Downstream line attenuation |
+| `sensor.hg612_dsl_attenuation_upstream` | dB | Upstream line attenuation |
+| `sensor.hg612_dsl_power_downstream` | dBm | Downstream transmit power |
+| `sensor.hg612_dsl_power_upstream` | dBm | Upstream transmit power |
 
-Upstream/downstream are the actual negotiated rates, not the theoretical maximum.
+All sensors are included in Home Assistant's long-term statistics.
 
 ## Requirements
 

@@ -1,7 +1,7 @@
 import telnetlib3
 
 from .const import DEFAULT_PORT
-from .parser import HG612Stats, parse_stats
+from .parser import HG612Stats, parse_stats, parse_system_uptime
 
 _TIMEOUT = 15
 
@@ -28,7 +28,11 @@ async def fetch_stats(host: str, username: str, password: str) -> HG612Stats:
         await _read_until(reader, "#")
         writer.write("xdslcmd info --stats\r\n")
         raw = await _read_until(reader, "#")
+        writer.write("cat /proc/uptime\r\n")
+        uptime_raw = await _read_until(reader, "#")
     finally:
         writer.close()
 
-    return parse_stats(raw)
+    stats = parse_stats(raw)
+    stats.system_uptime_seconds = parse_system_uptime(uptime_raw)
+    return stats

@@ -7,7 +7,12 @@ from homeassistant.data_entry_flow import FlowResultType
 from custom_components.hg612.const import CONF_HOST, CONF_PASSWORD, CONF_USERNAME, DOMAIN
 from custom_components.hg612.parser import HG612Stats
 
-MOCK_STATS = HG612Stats(dsl_uptime_seconds=471173, downstream_kbps=36076, upstream_kbps=4795)
+MOCK_STATS = HG612Stats(
+    dsl_uptime_seconds=471173,
+    downstream_kbps=36076,
+    upstream_kbps=4795,
+    system_uptime_seconds=654321.0,
+)
 USER_INPUT = {CONF_HOST: "192.168.1.1", CONF_USERNAME: "admin", CONF_PASSWORD: "admin"}
 
 _CF_FETCH = "custom_components.hg612.config_flow.fetch_stats"

@@ -7,6 +7,7 @@ class HG612Stats:
     dsl_uptime_seconds: int
     downstream_kbps: int
     upstream_kbps: int
+    system_uptime_seconds: float
 
 
 def parse_stats(text: str) -> HG612Stats:
@@ -34,4 +35,13 @@ def parse_stats(text: str) -> HG612Stats:
         dsl_uptime_seconds=dsl_uptime_seconds,
         downstream_kbps=downstream_kbps,
         upstream_kbps=upstream_kbps,
+        system_uptime_seconds=0.0,  # populated by fetch_stats from /proc/uptime
     )
+
+
+def parse_system_uptime(text: str) -> float:
+    """Parse the first field of /proc/uptime (seconds since boot, as a float)."""
+    try:
+        return float(text.split()[0])
+    except (ValueError, IndexError) as err:
+        raise ValueError(f"Could not parse /proc/uptime: {text!r}") from err

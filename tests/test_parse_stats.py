@@ -10,6 +10,7 @@ _mod = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_mod)
 
 parse_stats = _mod.parse_stats
+parse_system_uptime = _mod.parse_system_uptime
 
 TESTDATA = (pathlib.Path(__file__).parent / "testdata.txt").read_text()
 
@@ -77,3 +78,23 @@ class TestParseStatsEdgeCases:
     def test_empty_output_raises(self):
         with pytest.raises(ValueError):
             parse_stats("")
+
+
+class TestParseSystemUptime:
+    def test_typical_output(self):
+        # /proc/uptime: seconds_since_boot idle_time
+        assert parse_system_uptime("123456.78 234567.89\n") == pytest.approx(123456.78)
+
+    def test_integer_seconds(self):
+        assert parse_system_uptime("3600.00 1800.00\n") == pytest.approx(3600.0)
+
+    def test_telnet_crlf(self):
+        assert parse_system_uptime("98765.43 12345.67\r\n") == pytest.approx(98765.43)
+
+    def test_empty_raises(self):
+        with pytest.raises(ValueError):
+            parse_system_uptime("")
+
+    def test_non_numeric_raises(self):
+        with pytest.raises(ValueError):
+            parse_system_uptime("not a number\n")

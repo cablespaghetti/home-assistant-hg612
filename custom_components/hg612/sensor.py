@@ -37,6 +37,16 @@ SENSORS: tuple[HG612SensorDescription, ...] = (
         value_fn=lambda s: s.dsl_uptime_seconds,
     ),
     HG612SensorDescription(
+        key="system_uptime",
+        name="System Uptime",
+        device_class=SensorDeviceClass.DURATION,
+        native_unit_of_measurement=UnitOfTime.SECONDS,
+        suggested_unit_of_measurement=UnitOfTime.HOURS,
+        suggested_display_precision=1,
+        state_class=SensorStateClass.MEASUREMENT,
+        value_fn=lambda s: s.system_uptime_seconds,
+    ),
+    HG612SensorDescription(
         key="downstream_rate",
         name="DSL Downstream Rate",
         device_class=SensorDeviceClass.DATA_RATE,

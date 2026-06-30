@@ -7,7 +7,12 @@ from pytest_homeassistant_custom_component.common import MockConfigEntry
 from custom_components.hg612.const import CONF_HOST, CONF_PASSWORD, CONF_USERNAME, DOMAIN
 from custom_components.hg612.parser import HG612Stats
 
-MOCK_STATS = HG612Stats(dsl_uptime_seconds=471173, downstream_kbps=36076, upstream_kbps=4795)
+MOCK_STATS = HG612Stats(
+    dsl_uptime_seconds=471173,
+    downstream_kbps=36076,
+    upstream_kbps=4795,
+    system_uptime_seconds=654321.0,
+)
 
 
 @pytest.fixture

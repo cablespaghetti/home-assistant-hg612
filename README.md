@@ -8,7 +8,8 @@ The modem's HTTP interface reports DSL uptime as always 0 — this integration r
 
 | Entity | Unit | Description |
 |---|---|---|
-| `sensor.hg612_dsl_uptime` | s | Time since last DSL sync (from `Since Link time`) |
+| `sensor.hg612_dsl_uptime` | h | Time since last DSL sync (from `Since Link time`) |
+| `sensor.hg612_system_uptime` | h | Time since last modem reboot (from `/proc/uptime`) |
 | `sensor.hg612_dsl_downstream_rate` | kbit/s | Current downstream sync rate (Bearer 0) |
 | `sensor.hg612_dsl_upstream_rate` | kbit/s | Current upstream sync rate (Bearer 0) |
 
